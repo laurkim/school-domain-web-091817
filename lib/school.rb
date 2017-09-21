@@ -3,18 +3,18 @@ require 'pry'
 
 class School
 
-  attr_reader :roster
+  attr_reader :name, :roster
 
-  def initialize(roster)
+  def initialize(name)
+    @name = name
     @roster = {}
   end
 
   def add_student(student, grade)
-    if roster.has_key?(grade)
-      roster[grade] << student
-    else
-      roster[grade] = [student]
-    end
+
+    roster[grade] ||= []
+    roster[grade] << student
+
   end
 
   def grade(grade)
